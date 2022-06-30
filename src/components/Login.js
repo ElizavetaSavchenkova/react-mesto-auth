@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
   }
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     onLogin({ email, password });
   }
 
@@ -23,18 +23,17 @@ function Login({ onLogin }) {
         <h2 className="login__form-title">Вход</h2>
         <fieldset className="login__form-fieldset">
           <label className="login__form-label">
-            <input className="login__form-input" id="loginone" type="email" name=""
-              placeholder="Email" required onChange={handleEmailChange}/>
+            <input className="login__form-input" id="emailLog" type="email" name="emailLogInput"
+              placeholder="Email" required onChange={handleEmailChange} />
             <span className="login__form-input-error"></span>
           </label>
           <label className="login__form-label">
-            <input className="login__form-input" id="logintwo" type="password" name=""
-              placeholder="Пароль" required onChange={handlePasswordChange}/>
+            <input className="login__form-input" id="passwordLog" type="password" name="passwordLogInput"
+              placeholder="Пароль" required onChange={handlePasswordChange} />
             <span className="login__form-input-error"></span>
           </label>
-          <button className="login__button" type="">Войти</button>
+          <button className="login__button button" type="submit">Войти</button>
         </fieldset>
-        <p className='login__form-signin'>Уже зарегистрированы? Войти</p>
       </form>
     </section>
   );

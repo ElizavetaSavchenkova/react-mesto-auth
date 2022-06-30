@@ -7,16 +7,16 @@ function Register({ onRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
   }
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     onRegister({ email, password });
   }
 
@@ -26,18 +26,19 @@ function Register({ onRegister }) {
         <h2 className="login__form-title">Регистрация</h2>
         <fieldset className="login__form-fieldset">
           <label className="login__form-label">
-            <input className="login__form-input" id="" type="email" name=""
-              placeholder="Email" required onChange={handleEmailChange}/>
+            <input className="login__form-input" id="emailReg" type="email" name="emailRegInput"
+              placeholder="Email" required onChange={handleEmailChange} />
             <span className="login__form-input-error"></span>
           </label>
           <label className="login__form-label">
-            <input className="login__form-input" id="" type="password" name=""
-              placeholder="Пароль" required onChange={handlePasswordChange}/>
+            <input className="login__form-input" id="passwordReg" type="password" name="passwordRegInput"
+              placeholder="Пароль" required onChange={handlePasswordChange} />
             <span className="login__form-input-error"></span>
           </label>
-          <button className="login__button" type="">Зарегистрироваться</button>
+          <button className="login__button button" type="submit">Зарегистрироваться</button>
         </fieldset>
-        <p className='login__signin'>Уже зарегистрированы?</p>
+        <p className='login__form-signin'>Уже зарегистрированы?<Link className='login__form-signin' to='sign-in'>&nbsp;Войти</Link></p>
+
       </form>
     </section>
   );
