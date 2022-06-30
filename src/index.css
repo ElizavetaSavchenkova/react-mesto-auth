@@ -80,3 +80,7 @@
 @import url(./blocks/login/__form-input/login__form-input.css);
 @import url(./blocks/login/__button/login__button.css);
 @import url(./blocks/login/__form-signin/login__form-signin.css);
+
+@import url(./blocks/popup/__info-pic/popup__info-pic.css);
+@import url(./blocks/popup/__info-container/popup__info-container.css);
+@import url(./blocks/popup/__info-text/popup__info-text.css);

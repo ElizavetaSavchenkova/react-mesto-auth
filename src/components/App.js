@@ -33,7 +33,10 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const history = useHistory();
-  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
+
+
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [infoMessage, setInfoMessage] = useState();
 
 
 
@@ -59,11 +62,20 @@ function App() {
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
+////
+
+  function handleInfoTooltipOpen() {
+    setIsInfoTooltipOpen(true);
+  }
+
+/////
+
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false)
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
+    setIsInfoTooltipOpen(false);
     setSelectedCard({});
   }
 
@@ -144,12 +156,16 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
+          setIsInfoTooltipOpen(true);
+          setInfoMessage(true);
           console.log(loggedIn)
           history.push('/sign-in');
         }
       })
       .catch(() => {
         setLoggedIn(false);
+        setInfoMessage(false);
+        setIsInfoTooltipOpen(true);
       });
   }
 
@@ -160,10 +176,14 @@ function App() {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
         console.log(loggedIn);
-        setEmail(email)
+        setEmail(email);
         history.push('/');
       })
-      .catch(() => console.log('Лиза'));
+      .catch((err) => {
+        console.log(err);
+        setIsInfoTooltipOpen(true);
+        setInfoMessage(false);
+    })
   }
 
   //Функция выхода из профиля
@@ -178,7 +198,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
 
-        <Header loggedIn={loggedIn} email={email} onSignOut={exitProfile} />
+        <Header  email={email} onSignOut={exitProfile} />
 
         <Switch>
           <ProtectedRoute
@@ -224,7 +244,9 @@ function App() {
         </PopupWithForm>
         <InfoTooltip
           name={"info"}
+          isOpen={isInfoTooltipOpen}
           onClose={closeAllPopups}
+          infoMessage={infoMessage}
         />
       </div>
     </CurrentUserContext.Provider >

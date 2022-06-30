@@ -4,7 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 
 
-function Header({ loggedIn, email, onSignOut }) {
+function Header({  email, onSignOut }) {
   return (
     <header className="header">
       <img alt='Логотип Mesto' src={headerLogo} className="header__logo" />
