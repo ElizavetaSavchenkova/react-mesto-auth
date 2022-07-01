@@ -26,7 +26,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
-  const [infoMessage, setInfoMessage] = useState();
+  const [infoMessage, setInfoMessage] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -138,10 +138,8 @@ function App() {
     auth.registerUser(email, password)
       .then((res) => {
         if (res) {
-          setLoggedIn(true);
           handleInfoTooltipOpen();
           setInfoMessage(true);
-          console.log(loggedIn);
           history.push('/sign-in');
         }
       }).catch((err) => {
@@ -157,7 +155,6 @@ function App() {
       .then((res) => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
-        console.log(loggedIn);
         setEmail(email);
         history.push('/');
       }).catch((err) => {

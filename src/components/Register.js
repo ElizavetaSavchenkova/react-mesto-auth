@@ -27,12 +27,12 @@ function Register({ onRegister }) {
         <fieldset className="login__form-fieldset">
           <label className="login__form-label">
             <input className="login__form-input" id="emailReg" type="email" name="emailRegInput"
-              placeholder="Email" required onChange={handleEmailChange} />
+              placeholder="Email" value={email || ''} required onChange={handleEmailChange} />
             <span className="login__form-input-error"></span>
           </label>
           <label className="login__form-label">
             <input className="login__form-input" id="passwordReg" type="password" name="passwordRegInput"
-              placeholder="Пароль" required onChange={handlePasswordChange} />
+              placeholder="Пароль" required autoComplete="off" value={password || ''} onChange={handlePasswordChange} />
             <span className="login__form-input-error"></span>
           </label>
           <button className="login__button button" type="submit">Зарегистрироваться</button>

@@ -24,12 +24,12 @@ function Login({ onLogin }) {
         <fieldset className="login__form-fieldset">
           <label className="login__form-label">
             <input className="login__form-input" id="emailLog" type="email" name="emailLogInput"
-              placeholder="Email" required onChange={handleEmailChange} />
+              placeholder="Email" value={email || ''} required onChange={handleEmailChange} />
             <span className="login__form-input-error"></span>
           </label>
           <label className="login__form-label">
             <input className="login__form-input" id="passwordLog" type="password" name="passwordLogInput"
-              placeholder="Пароль" required onChange={handlePasswordChange} />
+              placeholder="Пароль" autoComplete="off" required value={password || ''} onChange={handlePasswordChange} />
             <span className="login__form-input-error"></span>
           </label>
           <button className="login__button button" type="submit">Войти</button>
